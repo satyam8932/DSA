@@ -18,13 +18,13 @@ class Node {
 
 class Solution {
     public:
-    int maxHeightOfTree(Node* node) {
+    int maxDepth(Node* node) {
         if (node == nullptr) {
             return 0;
         }
         
-        int leftHeight = maxHeightOfTree(node->left);
-        int rightHeight = maxHeightOfTree(node->right);
+        int leftHeight = maxDepth(node->left);
+        int rightHeight = maxDepth(node->right);
         
         return max(leftHeight, rightHeight) + 1;
     }

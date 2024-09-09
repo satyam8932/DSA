@@ -77,6 +77,15 @@ void postorderTraversal(Node* root) {
     cout << root->data << " ";
 }
 
+// Function for Preorder traversal
+void preorderTraversal(Node* root) {
+    if (root == nullptr)
+        return;
+
+    cout << root->data << " ";
+    preorderTraversal(root->left);
+    preorderTraversal(root->right);
+}
 
 int main() {
     Node* root = nullptr;

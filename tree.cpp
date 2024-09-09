@@ -40,20 +40,33 @@ void levelOrderTraverse(Node* root) {
 
     queue<Node*> q;
     q.push(root);
-
+    
     while (!q.empty()) {
-        Node* node = q.front();
-        cout << node->data << " ";
-        cout<<endl;
-        q.pop();
+        int levelSize = q.size();  // Number of nodes at the current level
+        for (int i = 0; i < levelSize; ++i) {
+            Node* node = q.front();
+            cout << node->data << " ";
+            q.pop();
 
-        if (node->left != nullptr)
-            q.push(node->left);
-        if (node->right != nullptr)
-            q.push(node->right);
+            if (node->left != nullptr)
+                q.push(node->left);
+            if (node->right != nullptr)
+                q.push(node->right);
+        }
+        cout << endl;  // Move to the next line after finishing current level
     }
-    cout << endl;
 }
+
+// Function for Inorder traversal 
+void inorderTraversal(Node* root) {
+    if (root == nullptr)
+        return;
+
+    inorderTraversal(root->left);
+    cout << root->data << " ";
+    inorderTraversal(root->right);
+}
+
 
 int main() {
     Node* root = nullptr;
@@ -61,5 +74,8 @@ int main() {
     root = buildTree(root);
     cout << "Tree structure (level-order traversal):" << endl;
     levelOrderTraverse(root);
+    cout<<endl;
+    inorderTraversal(root);
+    cout<<endl;
     return 0;
 }

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <queue>  // Required for using std::queue
+#include <stack>
 using namespace std;
 
 class Node {
@@ -55,6 +56,27 @@ void levelOrderTraverse(Node* root) {
         }
         cout << endl;  // Move to the next line after finishing current level
     }
+}
+
+// Function to perform depth-first traversal (DFS)
+void depthOrderTraverse(Node* root) {
+    if (root == nullptr)
+        return;
+
+    stack<Node*> s;
+    s.push(root);
+
+    while (!s.empty()) {
+        Node* node = s.top();
+        s.pop();
+        cout << node->data << " ";
+
+        if (node->right!= nullptr)
+            s.push(node->right);
+        if (node->left != nullptr)
+            s.push(node->left);
+    }
+
 }
 
 // Function for Inorder traversal 

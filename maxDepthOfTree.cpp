@@ -16,6 +16,20 @@ class Node {
 
 };
 
+class Solution {
+    public:
+    int maxHeightOfTree(Node* node) {
+        if (node == nullptr) {
+            return 0;
+        }
+        
+        int leftHeight = maxHeightOfTree(node->left);
+        int rightHeight = maxHeightOfTree(node->right);
+        
+        return max(leftHeight, rightHeight) + 1;
+    }
+};
+
 int main() 
 {
     return 0;

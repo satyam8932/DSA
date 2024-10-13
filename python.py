@@ -40,19 +40,42 @@ class Arrays:
         for i in range(size):
             if array[i] == 0:
                 array.append(array.pop(i))
+
+    def KthLargestElem(self, array, k):
+        """Find the Kth largest element of the array"""
+        if k > len(array) or k <= 0:
+            return None  # Handle invalid k values
+
+        list(array).sort()
+        return array[-k]
+    
+    def RemoveDuplicates(self, array):
+        """Remove duplicates from the sorted array"""
+        if not array:
+            return 0
+        size = len(array)
+        j = 0
+        for i in range(1, len(size)):
+            if array[i] != array[j]:
+                j += 1
+                array[j] = array[i]
+        return j + 1
+
         
 
 arryas = Arrays()
 
 arr = [0, 1, 2, 3, 4, 5, 6]
-print("Before Reverse: ")
-arryas.PrintArray(arr)
-arryas.ReverseArray(arr)
-print("Reversed Array:")
-arryas.PrintArray(arr)
-maximum = arryas.FindMax(arr)
-minimum = arryas.FindMin(arr)
-print(minimum, maximum)
-arr1 = [0, 1, 0, 3, 12]
-arryas.MoveZeroEnd(arr1)
-arryas.PrintArray(arr1)
+# print("Before Reverse: ")
+# arryas.PrintArray(arr)
+# arryas.ReverseArray(arr)
+# print("Reversed Array:")
+# arryas.PrintArray(arr)
+# maximum = arryas.FindMax(arr)
+# minimum = arryas.FindMin(arr)
+# print(minimum, maximum)
+# arr1 = [0, 1, 0, 3, 12]
+# arryas.MoveZeroEnd(arr1)
+# arryas.PrintArray(arr1)
+kth = arryas.KthLargestElem(arr, 3)
+print(kth)

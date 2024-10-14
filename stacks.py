@@ -23,3 +23,6 @@ print(stack_obj.stack)
 print(stack_obj.peek())
 stack_obj.pop(2)
 print(stack_obj.stack)
+
+
+
